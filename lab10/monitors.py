@@ -19,7 +19,15 @@ def escalation_rate(trials):
     return sum(t["status"] == "escalated" for t in trials) / max(1, len(trials))
 
 
+def carrier_strike_cap_hit_rate(trials):
+    return sum(
+        any(event.get("kind") == "carrier_strike_cap_hit" for event in trial["events"])
+        for trial in trials
+    ) / max(1, len(trials))
+
+
 MONITORS = {
     "escalation_rate": escalation_rate,     # có sẵn; KHÔNG tính là metric mới của đội
+    "carrier_strike_cap_hit_rate": carrier_strike_cap_hit_rate,
 }
 STARTER_MONITORS = ("escalation_rate",)

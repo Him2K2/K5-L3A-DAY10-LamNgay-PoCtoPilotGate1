@@ -5,7 +5,7 @@
 - Tên nhóm (`TenNhom`, không dấu, không khoảng trắng): `LamNgay`
 - Lớp: `L3A`
 - Repo của bàn: `K5-L3A-DAY10-LamNgay-PoCtoPilotGate1`
-- Thẻ sự cố đã bốc (S1–S8): Chưa xác nhận; repo hiện chưa có gói `incidents/S1`–`incidents/S8`. Điền sau khi đối chiếu số thẻ Lab Coach ghi.
+- Thẻ sự cố của nhóm: [S3 · Hãng miền Tây bị phạt vì bão](incidents/S3/card.md).
 
 ## Thành viên
 
@@ -46,19 +46,19 @@ Một điều học được: ... · Một điều còn chưa chắc: ...
 
 ### Phần việc phụ trách
 
-Kỹ sư cổng; phụ trách phần cổng và kiểm chứng hành vi theo vai trò được phân công. Xác nhận file, mục phiếu và phạm vi thực tế trước khi ghi đóng góp đã hoàn thành.
+Em phụ trách cổng hệ thống và kiểm tra hồi quy ở vòng 2 cho thẻ S3.
 
 ### Đóng góp cụ thể
 
-Chưa có bằng chứng gắn đóng góp cá nhân với log hoặc commit trong tài liệu hiện có; bổ sung công việc thực tế đã làm.
+Em tiếp nhận gói S3, bổ sung kiểm tra đúng kiện và hãng trước khi ghi lỗi, rồi giới hạn ghi tự động ở hai lỗi mỗi hãng mỗi ngày. Khi chạm trần, cổng chặn ghi thêm lỗi và vẫn giữ kết quả hoàn phí của khách. Em bổ sung chỉ số `carrier_strike_cap_hit_rate` để vận hành biết khi nào cần đối soát, đồng thời ghi kết quả kiểm thử vào Phiếu C.
 
 ### Bằng chứng
 
-Chưa xác nhận; bổ sung mã commit, mã lần chạy (`runs/<mã>`) hoặc mục phiếu liên quan.
+Commit `3a365e6` tiếp nhận gói S3, commit `91bad6d` ghi nhận phần hoàn thiện Khối 3. Phiếu C mục C0 ghi S3 đạt 60/60 lượt và bộ nền đạt 110/110 lượt sau sửa. Số lỗi hãng oan trên S3 giảm từ 10 ở mốc `prepared` xuống 0 ở mốc `after`.
 
 ### Exit ticket
 
-Một điều học được: ... · Một điều còn chưa chắc: ...
+Một điều em học được là kiểm tra đúng từng ticket vẫn có thể bỏ sót rủi ro tích lũy theo hãng trong ngày. Điều em còn chưa chắc là sổ lỗi trên pilot thật có cập nhật đủ nhanh để giữ đúng trần khi nhiều ticket được xử lý đồng thời.
 
 ## NguyenQuangTrung-2A202603389
 

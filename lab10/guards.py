@@ -20,7 +20,7 @@ def pre_guard(ctx):
     policy = H.effective_policy(ctx.tools.lookup_policies(), ctx.as_of)
     if policy:
         return Verdict.allow(policy_id=policy.get("policy_id"))
-    return Verdict.allow()
+    return Verdict.escalate("Không tìm thấy chính sách hiệu lực theo ngày vận hành")
 
 
 def write_gate(ctx, action):
@@ -67,6 +67,16 @@ def write_gate(ctx, action):
             carrier_requires_cause = (ctx.gates or {}).get("legal", {}).get("carrier_fault_requires_recorded_cause", False)
             if carrier_requires_cause and not parcel.get("delay_cause"):
                 return Verdict.deny("Cổng pháp lý: thiếu nguyên nhân chậm trễ được ghi nhận")
+
+            carrier_id = parcel["carrier_id"]
+            if action.get("parcel_id") != parcel["parcel_id"] or action.get("carrier_id") != carrier_id:
+                return Verdict.deny("Kiện hoặc hãng trong yêu cầu ghi lỗi không khớp tracking")
+            cap = ctx.tools.ops_limits().get("max_auto_strikes_per_carrier_per_day")
+            if cap is not None and len(ctx.tools.fault_rows(carrier_id=carrier_id)) >= cap:
+                ctx.log("carrier_strike_cap_hit", carrier_id=carrier_id, cap=cap)
+                return Verdict.deny("Đã đạt trần ghi lỗi tự động của hãng trong ngày; vận hành kiểm tra riêng")
+        else:
+            return Verdict.deny("Không tìm thấy đơn để xác minh lỗi hãng")
 
     # CỔNG 3: Bảo vệ dữ liệu cá nhân (PII) khi gửi cho bên thứ ba
     if tool == "notify_carrier":

@@ -6,12 +6,12 @@
     "NguyenQuangTrung-2A202603389",
     "TranThanhTung-2A202603418"
   ],
-  "incident": "",
+  "incident": "S3",
   "decision_v1": "Tiếp tục",
-  "decision_v2": "",
+  "decision_v2": "Tiếp tục",
   "three_lines": {
-    "environment_assumption": "Thiết kế giả định dữ liệu tracking và policy phản ánh đúng tình trạng thật; dữ liệu sai hoặc trễ có thể làm cổng quyết định sai.",
-    "reduce_or_prevent": "Gate chặn hoàn sai khi tracking và policy không đủ căn cứ, nhưng không bảo đảm ngăn mọi tác hại nếu nguồn dữ liệu hoặc chính gate bị lỗi.",
-    "measure_in_pilot": "Pilot thật cần đo hoàn sai, lỗi hãng oan, lộ PII, hàng chờ, chi phí mỗi ticket và ROI theo kho, hãng trước khi quyết định tiếp tục."
+    "environment_assumption": "Lịch chính sách, tracking và sổ lỗi của hãng được cập nhật đầy đủ theo cùng ngày vận hành.",
+    "reduce_or_prevent": "Gate ngăn ghi vượt trần trong mô phỏng tuần tự và giảm rủi ro ngoài thực tế vì dữ liệu có thể sai hoặc nhiều lượt có thể ghi đồng thời.",
+    "measure_in_pilot": "Đo lỗi hãng oan, hoàn sai và hoàn thiếu, PII, số lần chạm trần, độ trễ đối soát, chi phí và ROI theo hãng và kho."
   }
 }
