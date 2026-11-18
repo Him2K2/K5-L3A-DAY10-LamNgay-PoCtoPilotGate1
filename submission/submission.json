@@ -1,12 +1,17 @@
 {
-  "team": "",
-  "members": [],
+  "team": "K5-L3A-DAY10-LamNgay-PoCtoPilotGate1",
+  "members": [
+    "HoXuanVu-2A202603406",
+    "PhanHaiDang-2A202603409",
+    "NguyenQuangTrung-2A202603389",
+    "TranThanhTung-2A202603418"
+  ],
   "incident": "",
-  "decision_v1": "",
+  "decision_v1": "Tiếp tục",
   "decision_v2": "",
   "three_lines": {
-    "environment_assumption": "",
-    "reduce_or_prevent": "",
-    "measure_in_pilot": ""
+    "environment_assumption": "Thiết kế giả định dữ liệu tracking và policy phản ánh đúng tình trạng thật; dữ liệu sai hoặc trễ có thể làm cổng quyết định sai.",
+    "reduce_or_prevent": "Gate chặn hoàn sai khi tracking và policy không đủ căn cứ, nhưng không bảo đảm ngăn mọi tác hại nếu nguồn dữ liệu hoặc chính gate bị lỗi.",
+    "measure_in_pilot": "Pilot thật cần đo hoàn sai, lỗi hãng oan, lộ PII, hàng chờ, chi phí mỗi ticket và ROI theo kho, hãng trước khi quyết định tiếp tục."
   }
 }
