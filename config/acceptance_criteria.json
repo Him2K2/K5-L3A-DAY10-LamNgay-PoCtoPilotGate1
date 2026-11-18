@@ -14,7 +14,7 @@
     "escalation_rate_max": 0.25
   },
   "business_ops": {
-    "cost_per_ticket_vnd_max": 5000,
+    "cost_per_ticket_vnd_max": 15000,
     "roi_min": 0.2,
     "queue_stuck_max": 0
   },
