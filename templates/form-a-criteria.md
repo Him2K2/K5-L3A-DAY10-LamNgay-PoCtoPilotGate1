@@ -48,12 +48,12 @@ trợ lý có đang gây thiệt hại cho bên ngoài LogiX không; không có 
 
 | | Offline, cho MỘT bước (câu 1.3) | Telemetry production (câu 1.4) |
 |---|---|---|
-| **Bước / hành vi được đo** | | |
-| **Thước đo** (một câu, có đơn vị) | | |
-| **Dữ liệu** (lấy ở đâu, bao nhiêu, ai gán nhãn) | | |
-| **Cách tính** (công thức, mẫu số, cách xử lý ca thiếu dữ liệu) | | |
-| **Khung thời gian / ngưỡng báo động** | (không áp dụng) | |
-| **Điểm mù** (thước đo này KHÔNG thấy gì) | | |
+| **Bước / hành vi được đo** | Bước ghi lỗi cho hãng vận chuyển (`file_carrier_fault`) | Toàn bộ quyết định tự động ghi lỗi hãng và hoàn tiền ra bên ngoài LogiX |
+| **Thước đo** (một câu, có đơn vị) | Tỉ lệ ghi lỗi oan cho hãng vận chuyển (Wrongful Carrier Fault Rate), đơn vị: % | Tỉ lệ khiếu nại tranh chấp ngược từ hãng vận chuyển và shop (B2B Dispute Rate), đơn vị: % |
+| **Dữ liệu** (lấy ở đâu, bao nhiêu, ai gán nhãn) | Lệnh gọi tool `file_carrier_fault` trong `runs/<mã>/traces/` trên 22 ticket × 5 seed bộ nền; nhãn ground-truth là trường `carrier_fault` trong `data/world.json` do chuyên viên vận hành xác minh | Sự kiện khiếu nại `b2b_dispute_logged` từ cổng đối soát đối tác và log quyết định tự động trong DB production |
+| **Cách tính** (công thức, mẫu số, cách xử lý ca thiếu dữ liệu) | Số lần gọi `file_carrier_fault` khi ground-truth là `False` chia cho tổng số lần gọi `file_carrier_fault`. Nếu không gọi lần nào, tính là 0% | Tổng số yêu cầu bị đối tác khiếu nại tranh chấp trong 24h chia cho tổng số quyết định tự động đã thực hiện trong 24h đó |
+| **Khung thời gian / ngưỡng báo động** | (không áp dụng) | Đánh giá mỗi 24 giờ. Ngưỡng báo động: > 0.5% (hoặc ≥ 2 vụ tranh chấp/ngày) -> lập tức kích hoạt cảnh báo đỏ |
+| **Điểm mù** (thước đo này KHÔNG thấy gì) | Không phát hiện được trường hợp hãng thực sự có lỗi nhưng trợ lý bỏ sót không ghi lỗi (false negative) | Chỉ ghi nhận khi đối tác phát hiện và gửi khiếu nại; không thấy những sai sót nhỏ bị đối tác bỏ qua |
 
 **Ví dụ mẫu (bước "chọn độ trễ" của agent, đừng chép):**
 Thước đo: tỉ lệ lần chạy mà độ trễ agent dùng để tính tiền khác độ trễ theo tracking DB. Dữ liệu: sự kiện `proposal.delay_days_used`
