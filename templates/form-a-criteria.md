@@ -70,10 +70,10 @@ nhau chia cho số lần chạy có sự kiện `proposal`; lần chạy không 
 ## A3 · Đọc một kết quả có khoảng tin cậy (phút 35–40)
 
 ### Câu 1.5 · Chọn MỘT kết luận và giải thích một câu
+Chọn MỘT kết luận và giải thích một câu
+Số minh hoạ trong đề (không phải số của bàn). Khoanh: (b)
 
-Số minh hoạ trong đề (không phải số của bàn). Khoanh: **(a) · (b) · (c) · (d)**
-
-Giải thích một câu: …
+Giải thích một câu: Khoảng tin cậy 95% của bản X là [0,9400; 1,0] đã bao trùm kết quả 1,0 của bản Y (chênh lệch 1 lần chạy 49/50 so với 50/50 hoàn toàn có thể do biến thiên lấy mẫu ngẫu nhiên, chưa đủ ý nghĩa thống kê để khẳng định Y vượt trội hơn X).
 
 ---
 
